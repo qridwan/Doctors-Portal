@@ -14,7 +14,7 @@ const NavigationBar = () => {
     <Nav className="ml-auto">
       <Nav.Link style={marginRight}  className=' '  href="#home">Home</Nav.Link>
       <Nav.Link style={marginRight} className=' ' href="#about">About</Nav.Link>
-      <Link to="/dashboard" style={marginRight} className=''>DOCTORS DASHBOARD</Link>
+      <Link to="/dashboard" style={marginRight} className=''>Dashboard</Link>
       <Nav.Link style={marginRight} className='text-info' href="#reviews">Reviews</Nav.Link>
       <Nav.Link style={marginRight} className='text-info' href="#blog">Blog</Nav.Link>
       <Nav.Link style={marginRight} className='text-info' href="#contact">Contact Us</Nav.Link>

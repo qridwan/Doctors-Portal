@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import loginImg from "../../images/login.png";
 import { useForm } from "react-hook-form";
 import "./Login.css";
 import firebase from "firebase";
 import { firebaseConfig } from "../../Firebase.config";
 import { UserContext } from "../../App";
-import { useHistory, useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router-dom";
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -15,6 +15,7 @@ const Login = () => {
   const location = useLocation();
   const { from } = location.state || { from: { pathname: "/" } };
   const [userInfo, setUserInfo] = useContext(UserContext);
+  
   const googleProvider = new firebase.auth.GoogleAuthProvider();
   const handleGoogleSignIn = () => {
     firebase
@@ -33,11 +34,13 @@ const Login = () => {
       });
   };
   console.log(userInfo);
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => console.log(data);
   return (
     <div className="row container-fluid">
@@ -54,7 +57,10 @@ const Login = () => {
             />
             <br />
             {errors.lastName && <p>Last name is required.</p>}
-            <input {...register("email", { pattern: /\d+/ })} placeholder="Email" />
+            <input
+              {...register("email", { pattern: /\d+/ })}
+              placeholder="Email"
+            />
             <br />
             {errors.age && <p>Please enter number for age.</p>}
             <br />
