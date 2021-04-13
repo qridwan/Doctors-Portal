@@ -1,0 +1,17 @@
+.form{
+    background:#20D6FF;
+}
+.form input{
+    min-width: 220px;
+    padding: .5em;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px
+}
+.form input:focus{
+    outline: none
+}
+
+.form >form> h2 {
+    color: #FC2453
+}

@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.header_container {
+    width: 100%;
+    margin: 0 auto;
+    height:800px;
+    margin-bottom: 100px;
+    position:relative;
+    background-image: url('../../../images/headerChairBG.png');
+    background-position: cover;
+    background-size: contain;
+}
+.header_container::after {
+    height:700px;
+    content:' ';
+    position: absolute;
+    top: 0;
+    width: 30%;
+    z-index:-1 ;
+    right: 0;
+    background-color: #3a4256;
+}
