@@ -41,7 +41,7 @@ const AppointmentModal = ({ modalIsOpen, closeModal, subject, date }) => {
     data.service = subject;
     data.created = new Date().toDateString();
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://doctorsportal-22.herokuapp.com/booking", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

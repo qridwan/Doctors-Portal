@@ -25,7 +25,7 @@ const HeaderBussinessInfos = () => {
 ];
 
     return (
-        <section className="d-flex justify-content-center">
+        <section className="d-flex justify-content-center headerBusiness">
            <div className="row w-75">
            {
                 bussinessData.map((data) => <HeaderBussinessCard infos={data}/>)

@@ -28,7 +28,7 @@ const Dashboard = () => {
   useEffect(() => {
     const date = dateFormat(selectedDate, "paddedShortDate");
 
-    fetch("http://localhost:5000/appointmentsByDate", {
+    fetch("https://doctorsportal-22.herokuapp.com/appointmentsByDate", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ date: date, email: userInfo.email }),

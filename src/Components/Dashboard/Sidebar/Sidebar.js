@@ -18,7 +18,7 @@ const Sidebar = ({ gotoPage }) => {
   console.log("🚀 ~ file: Sidebar.js ~ line 18 ~ Sidebar ~ user", user);
 
   useEffect(() => {
-    fetch("http://localhost:5000/isDoctor", {
+    fetch("https://doctorsportal-22.herokuapp.com/isDoctor", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ email: user.email }),

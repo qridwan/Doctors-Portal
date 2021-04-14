@@ -5,12 +5,12 @@ const Doctors = () => {
     const [doctors, setDoctors] = useState([])
 
     useEffect( () => {
-        fetch('http://localhost:5000/doctors')
+        fetch('https://doctorsportal-22.herokuapp.com/doctors')
         .then(res => res.json())
         .then(data => setDoctors(data))
     }, [])
     console.log("🚀 ~ file: Doctors.js ~ line 6 ~ Doctors ~ doctors", doctors);
-    
+
     return (
         <section className="doctors">
             <div className="container">
