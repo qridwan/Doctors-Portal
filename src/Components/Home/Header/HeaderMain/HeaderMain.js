@@ -5,7 +5,7 @@ import MainHeaderImg from "../../../../images/headerChair.png";
 const HeaderMain = () => {
   return (
     <main style={{height: '550px' , width: '100%'}} className="row d-flex align-items-center">
-      <div className="col-md-4 col-sm-6 offset-sm-2  offset-md-2 ml-3">
+      <div className="col-md-4 col-sm-6 offset-sm-2  offset-md-2">
         <h1>
           Your New Smile <br /> Starts Here{" "}
         </h1>
