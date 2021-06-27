@@ -5,7 +5,7 @@ import { UserContext } from "../../App";
 import AppointmentList from "./ApoointsmentList/AppointmentList";
 import AddDoctor from "./Sidebar/AddDoctor";
 import Sidebar from "./Sidebar/Sidebar";
-import './Dashboard.css'
+import "./Dashboard.css";
 const containerStyle = {
   backgroundColor: "#F4FDFB",
   height: "100%",

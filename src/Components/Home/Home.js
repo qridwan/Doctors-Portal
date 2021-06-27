@@ -10,15 +10,15 @@ import Testimonials from './Testimonials/Testimonials';
 
 const Home = () => {
     return (
-        <div>
-            <Header></Header>
-            <Services/>
-            <AppointmentSection/>
-            <Testimonials/>
-            <Blogs/>
-            <Doctors/>
-            <Contact/>
-            <Footer/>
+        <div className="">
+            <Header />
+            <Services />
+            <AppointmentSection />
+            <Testimonials />
+            <Blogs />
+            <Doctors />
+            <Contact />
+            <Footer />
         </div>
     );
 };

@@ -15,8 +15,7 @@ import { UserContext } from "../../../App";
 const Sidebar = ({ gotoPage }) => {
   const [isDoctor, setIsDoctor] = useState(false);
   const [user] = useContext(UserContext);
-  console.log("🚀 ~ file: Sidebar.js ~ line 18 ~ Sidebar ~ user", user);
-
+  
   useEffect(() => {
     fetch("https://doctorsportal-22.herokuapp.com/isDoctor", {
       method: "POST",
