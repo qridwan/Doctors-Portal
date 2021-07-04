@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Footer from '../Sheared/Footer/Footer';
-import NavigationBar from '../Sheared/Navbar/Navbar';
 import AppointmentHeader from './AppointmentHeader/AppointmentHeader';
 
 import AvailableAppointment from './AvailableAppointment/AvailableAppointment';
@@ -12,7 +11,6 @@ const Appointment = () => {
     }
     return (
         <div>
-            <NavigationBar/>
             <AppointmentHeader handleCalender={handleCalender}/>
             <AvailableAppointment selectedDate={selectedDate}/>
             <Footer/>

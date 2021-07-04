@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
+import { UserContext } from "../../../App";
 const dateFormat = require("dateformat");
 const customStyles = {
   content: {
@@ -27,7 +28,7 @@ const inputStyles = {
 Modal.setAppElement("#root");
 const AppointmentModal = ({ modalIsOpen, closeModal, subject, date }) => {
   function afterOpenModal() {}
-
+const [userInfo] = useContext(UserContext);
   const {
     register,
     handleSubmit,
@@ -91,6 +92,7 @@ const AppointmentModal = ({ modalIsOpen, closeModal, subject, date }) => {
               style={inputStyles}
               {...register("email", { required: true })}
               placeholder="Email"
+              defaultValue= {userInfo.email}
             />
             <br />
             {errors.email && <span>This field is required</span>}

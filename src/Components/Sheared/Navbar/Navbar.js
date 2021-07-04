@@ -19,9 +19,7 @@ const NavigationBar = () => {
           <Link to="/" className="text-decoration-none" >
            <NavText  className={splitLocation[1] === "" ? "active" : ""}>Home</NavText> 
           </Link>
-          <Link  className="text-decoration-none" to="/about">
-          <NavText>About </NavText>
-          </Link>
+         
           <Link to="/dashboard" className="text-decoration-none">
           <NavText  className={splitLocation[1] === "dashboard" ? "active" : ""}>Dashboard </NavText>
           </Link>
@@ -30,6 +28,9 @@ const NavigationBar = () => {
           </Link>
           <Link   className="text-decoration-none">
           <NavText> Blog </NavText>
+          </Link>
+          <Link  className="text-decoration-none" to="/">
+          <NavText>About</NavText>
           </Link>
           <Link  className="text-decoration-none">
           <NavText>Contact Us </NavText>
