@@ -12,8 +12,9 @@ const containerStyle = {
 };
 
 const Dashboard = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState("");
   const [appointments, setAppointments] = useState([]);
+  const [allAppointments, setAllAppointments] = useState([]);
   const [userInfo] = useContext(UserContext);
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -28,33 +29,42 @@ const Dashboard = () => {
   useEffect(() => {
     const date = dateFormat(selectedDate, "paddedShortDate");
 
-    fetch("https://doctorsportal-22.herokuapp.com/appointmentsByDate", {
+    fetch(" https://doctorsportal-22.herokuapp.com/appointmentsByDate", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ date: date, email: userInfo.email }),
     })
       .then((res) => res.json())
-      .then((data) => setAppointments(data));
+      .then((data) => {
+        setAllAppointments(data[0].userAppointments)
+        setAppointments(data[0].specificDaysAppointment)
+      console.log(data)});
   }, [selectedDate, userInfo.email]);
 
   console.log(appointments);
 
   return (
-    <section className="">
-      <div style={containerStyle} className="row ">
-        <div className="col-md-2">
+    <section className="w-100">
+      <div style={containerStyle} className="row w-100">
+        <div className="col-lg-2">
           <Sidebar gotoPage={gotoPage}></Sidebar>
         </div>
         {!condition && (
           <>
             {" "}
-            <div className="col-md-5 d-flex justify-content-center h-100 my-5">
-              <Calendar onChange={handleDateChange} value={new Date()} />
+            <div className="col-lg-4 col-md-8 col-sm-10 h-100">
+              <Calendar className="m-auto border-0" style={{border:"none"}} onChange={handleDateChange} value={new Date()} />
             </div>
-            <div className="col-md-5">
+            <div className="col-lg-6 col-md-10  col-sm-10 ">
               <AppointmentList
                 selectedDate={selectedDate}
                 appointments={appointments}
+              ></AppointmentList>
+            </div>
+            <div className="col-lg-8 offset-3 mt-4">
+            <AppointmentList
+                selectedDate={""}
+                appointments={allAppointments}
               ></AppointmentList>
             </div>
           </>

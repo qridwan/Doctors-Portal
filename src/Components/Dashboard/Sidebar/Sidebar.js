@@ -5,6 +5,7 @@ import {
   faGripHorizontal,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
+import firebase from "firebase";
 import { faFileAlt } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useEffect, useState } from "react";
@@ -14,8 +15,7 @@ import { UserContext } from "../../../App";
 
 const Sidebar = ({ gotoPage }) => {
   const [isDoctor, setIsDoctor] = useState(false);
-  const [user] = useContext(UserContext);
-  
+  const [user, setUser] = useContext(UserContext);
   useEffect(() => {
     fetch("https://doctorsportal-22.herokuapp.com/isDoctor", {
       method: "POST",
@@ -25,11 +25,22 @@ const Sidebar = ({ gotoPage }) => {
       .then((res) => res.json())
       .then((data) => setIsDoctor(data));
   }, []);
-
+  const handleSignOut = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        const signUserOut = { isSigned: false, name: "", email: "", photo: "" };
+        setUser(signUserOut);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   console.log(isDoctor);
   return (
     <div
-      className="sidebar d-flex flex-column justify-content-between col-md-2 py-5 px-4 "
+      className="sidebar  flex-column justify-content-between col-md-2 py-5 px-4 "
       style={{ height: "100vh" }}
     >
       <ul className="list-unstyled">
@@ -60,9 +71,9 @@ const Sidebar = ({ gotoPage }) => {
         )}
       </ul>
       <div>
-        <Link to="/" className="text-white">
+        <div style={{cursor: 'pointer'}} onClick={handleSignOut} className="text-white">
           <FontAwesomeIcon icon={faSignOutAlt} /> <span>Logout</span>
-        </Link>
+        </div>
       </div>
     </div>
   );
