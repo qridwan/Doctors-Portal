@@ -5,6 +5,7 @@ import { UserContext } from "../../App";
 import AppointmentList from "./ApoointsmentList/AppointmentList";
 import AddDoctor from "./Sidebar/AddDoctor";
 import Sidebar from "./Sidebar/Sidebar";
+import SpinGif from "../../images/Spin.gif";
 import "./Dashboard.css";
 const containerStyle = {
   backgroundColor: "#F4FDFB",
@@ -15,6 +16,7 @@ const Dashboard = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [appointments, setAppointments] = useState([]);
   const [allAppointments, setAllAppointments] = useState([]);
+  const [spin, setSpin] = useState(true);
   const [userInfo] = useContext(UserContext);
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -36,9 +38,10 @@ const Dashboard = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAllAppointments(data[0].userAppointments)
-        setAppointments(data[0].specificDaysAppointment)
-      console.log(data)});
+        setAllAppointments(data[0].userAppointments);
+        setAppointments(data[0].specificDaysAppointment);
+        setSpin(false);
+      });
   }, [selectedDate, userInfo.email]);
 
   console.log(appointments);
@@ -53,19 +56,26 @@ const Dashboard = () => {
           <>
             {" "}
             <div className="col-lg-4 col-md-8 col-sm-10 h-100">
-              <Calendar className="m-auto border-0" style={{border:"none"}} onChange={handleDateChange} value={new Date()} />
+              <Calendar
+                className="m-auto border-0"
+                style={{ border: "none" }}
+                onChange={handleDateChange}
+                value={new Date()}
+              />
             </div>
             <div className="col-lg-6 col-md-10  col-sm-10 ">
               <AppointmentList
                 selectedDate={selectedDate}
                 appointments={appointments}
               ></AppointmentList>
+              {spin && <div className="text-center"><img className="" src={SpinGif} alt="spin" /></div>}
             </div>
             <div className="col-lg-8 offset-3 mt-4">
-            <AppointmentList
+              <AppointmentList
                 selectedDate={""}
                 appointments={allAppointments}
               ></AppointmentList>
+              {spin && <div className="text-center"><img className="" src={SpinGif} alt="spin" /></div>}
             </div>
           </>
         )}
